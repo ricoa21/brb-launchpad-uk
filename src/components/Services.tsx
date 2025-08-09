@@ -3,47 +3,43 @@ import { Button } from "@/components/ui/button";
 const Services = () => {
   const services = [
     {
-      title: "Starter Package",
-      price: "£199",
-      description: "Perfect for self-directed freelancers who need the essentials",
+      title: "Starter",
+      price: "£99",
+      description: "One-time outreach with visibility and structure",
       features: [
-        "Re-engagement email templates",
-        "Social media post templates", 
-        "Client outreach strategy guide",
-        "30-day comeback calendar",
-        "Basic portfolio review checklist"
+        "Personalized message templates for your client list",
+        "Simple booking link setup",
+        "2 social media captions + posting guidance",
+        "Outreach to 20-30 clients",
+        "Lightweight, hands-on support"
       ],
       cta: "Get Started",
       popular: false
     },
     {
-      title: "Professional Package", 
-      price: "£499",
-      description: "Comprehensive support with personalized guidance",
+      title: "Pro", 
+      price: "£249",
+      description: "Hands-off social and email campaign management",
       features: [
-        "Everything in Starter Package",
-        "Personalized re-engagement strategy",
-        "Custom email sequences",
-        "Social media content calendar",
-        "One-on-one strategy session",
-        "Portfolio optimization",
-        "Client database audit"
+        "Everything in Starter",
+        "Done-for-you social media scheduling (4 weeks)",
+        "Booking link integration with calendar management",
+        "Personalized warm-up email campaign",
+        "Message delivery and engagement tracking"
       ],
-      cta: "Choose Professional",
+      cta: "Choose Pro",
       popular: true
     },
     {
-      title: "Concierge Package",
-      price: "£999", 
-      description: "Full-service managed return with dedicated support",
+      title: "Concierge",
+      price: "£399", 
+      description: "Full-service, end-to-end relaunch with coaching",
       features: [
-        "Everything in Professional Package",
-        "Managed client outreach campaign",
-        "Social media management (30 days)",
-        "Personal brand refresh",
-        "Weekly strategy calls",
-        "Lead qualification & follow-up",
-        "Market repositioning consultation"
+        "Everything in Pro",
+        "Management of client replies & confirmations",
+        "Personalized coaching session",
+        "Portfolio, website bio & social profile refresh",
+        "Monthly performance summary & strategy recommendations"
       ],
       cta: "Go Concierge",
       popular: false
