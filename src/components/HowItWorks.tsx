@@ -3,32 +3,44 @@ const HowItWorks = () => {
     {
       number: "1",
       title: "Tell Us Your Return Date",
-      description: "Let us know when you plan to be back in action, so we can time your re‑engagement perfectly.",
+      description: "Share your planned comeback date so we can time your outreach and posts for maximum impact.",
       icon: "📅"
     },
     {
       number: "2", 
-      title: "Send Us Your Client List",
-      description: "You share your list of past or priority clients in a secure, GDPR-compliant way. (Don't worry — we delete it as soon as your campaign ends.)",
+      title: "Send Your Client List",
+      description: "Upload your past or priority client details (phone numbers and/or emails) securely. GDPR‑compliant handling. Deleted as soon as your campaign ends.",
       icon: "📋"
     },
     {
       number: "3",
-      title: "We Create Your 'I'M BACK' Campaign", 
-      description: "Depending on your package, we send friendly, personalised messages to your clients, set up your booking link, prepare social media announcements, and for Pro & Concierge packages, run multi‑week campaigns while managing replies and tracking responses.",
-      icon: "🚀"
+      title: "Choose Your Package & Communication Style", 
+      description: "Starter: One round of messages (SMS, email, or social DMs) + 2 social posts ready for you to post. Pro: Multi‑message, multi‑channel campaigns + scheduled social posts done for you. Concierge: Fully managed — posts, messages, and replies while you're away.",
+      icon: "💬"
     },
     {
       number: "4",
-      title: "You Focus on Your Return — We Handle the Rest",
-      description: "While you finish your travels, maternity leave, or time abroad, we make sure your clients know you're coming back and are ready to book.",
-      icon: "✨"
+      title: "Provide Social Images (if using socials)",
+      description: "Send 1–3 brand‑appropriate images for your posts, or we can help source/create them.",
+      icon: "📷"
     },
     {
       number: "5", 
-      title: "Your Diary Starts Filling Up",
-      description: "When you're back, your clients are already warmed up, engaged, and ready to work with you again. No awkward reintroductions, no starting from scratch — just a smooth, confident return.",
-      icon: "📈"
+      title: "We Create & Launch Your 'I'M BACK' Campaign",
+      description: "We prepare and send friendly, personalised messages, set up booking links, schedule posts (Pro/Concierge), and manage replies where included.",
+      icon: "🚀"
+    },
+    {
+      number: "6",
+      title: "You Relax — We Handle Everything",
+      description: "While you're away, we keep your audience warm, reply to enquiries (Pro/Concierge), and track engagement.",
+      icon: "✨"
+    },
+    {
+      number: "7", 
+      title: "Come Back to a Warm Client Base",
+      description: "When you return, your diary is already filling — no awkward first messages, no starting from scratch. Just a confident, fully booked return.",
+      icon: "📖"
     }
   ];
 
@@ -40,9 +52,7 @@ const HowItWorks = () => {
             How Does It Work?
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            We make your comeback simple, stress-free, and effective.
-            <br />
-            Here's how it works from start to finish:
+            We make your comeback simple, stress‑free, and effective — whether you're away for a few weeks or several months.
           </p>
         </div>
         
