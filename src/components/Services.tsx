@@ -62,7 +62,7 @@ const Services = () => {
             Choose Your Return Strategy
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            From DIY templates to full concierge service, we have the right solution for your comeback journey.
+            Pick the service level that suits your needs — from a single round of outreach with a couple of social updates, to multi‑channel campaigns, to full management of messages, posts, and replies while you're away.
           </p>
         </div>
         
