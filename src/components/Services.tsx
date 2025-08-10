@@ -5,13 +5,16 @@ const Services = () => {
     {
       title: "Starter",
       price: "£99",
-      description: "One-time outreach with visibility and structure",
+      description: "One‑time outreach for a simple, structured return",
       features: [
-        "Personalized message templates for your client list",
-        "Simple booking link setup",
-        "2 social media captions + posting guidance",
-        "Outreach to 20-30 clients",
-        "Lightweight, hands-on support"
+        "One round of personalized outreach to up to 30 clients via your choice of SMS, email, or a social platform",
+        "Ready-to-use message templates (choose your tone/style)",
+        "Booking link setup support",
+        "2 social media captions crafted for you, with step‑by‑step posting guidance",
+        "Client provides images for branded, authentic social posts",
+        "Lightweight, guided support throughout your campaign",
+        "Multi‑channel upgrade: Additional £20–£25 for a second/third channel",
+        "Clients post social content themselves (add-on available for \"we post for you\")"
       ],
       cta: "Get Started",
       popular: false
@@ -19,27 +22,32 @@ const Services = () => {
     {
       title: "Pro", 
       price: "£249",
-      description: "Hands-off social and email campaign management",
+      description: "Multi-channel, hands-off re-engagement for a confident comeback",
       features: [
-        "Everything in Starter",
-        "Done-for-you social media scheduling (4 weeks)",
-        "Booking link integration with calendar management",
-        "Personalized warm-up email campaign",
-        "Message delivery and engagement tracking"
+        "Everything in Starter, PLUS:",
+        "Outreach to up to 100 clients",
+        "Multi-step campaign: 3 personalized messages per client via SMS, email, and social platform",
+        "Done‑for‑you social media scheduling & posting (4–6 posts, 4 weeks, using your images)",
+        "Booking link integration with calendar (Google, Outlook, etc.)",
+        "Client list segmentation for targeted outreach",
+        "Campaign delivery & engagement tracking report",
+        "Seamless, hands-off service with GDPR‑compliance"
       ],
       cta: "Choose Pro",
       popular: true
     },
     {
       title: "Concierge",
-      price: "£399", 
-      description: "Full-service, end-to-end relaunch with coaching",
+      price: "from £399", 
+      description: "Full-service relaunch, communications management & strategic support",
       features: [
-        "Everything in Pro",
-        "Management of client replies & confirmations",
-        "Personalized coaching session",
-        "Portfolio, website bio & social profile refresh",
-        "Monthly performance summary & strategy recommendations"
+        "Everything in Pro, PLUS:",
+        "Fully managed replies, enquiries, and booking requests across all channels (while you're away)",
+        "Custom campaign planning: You decide the number of social posts/week, messaging frequency, and campaign duration",
+        "Portfolio, bio, and profile refresh as needed",
+        "Monthly performance summary & actionable strategy recommendations",
+        "Personalized coaching session to support your goals",
+        "Pricing calculator: Custom quotes based on campaign scale, minimum charge above Pro"
       ],
       cta: "Go Concierge",
       popular: false
