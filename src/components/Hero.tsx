@@ -35,9 +35,6 @@ const Hero = () => {
             >
               Start Your Return Journey
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-white/30 text-white hover:bg-white/10">
-              Learn More
-            </Button>
           </div>
         </div>
       </div>

@@ -47,19 +47,19 @@ const ReturnJourney = () => {
       id: "starter",
       name: "Starter",
       price: "£99",
-      features: ["Up to 50 contacts", "Single channel", "Basic support"],
+      features: ["Up to 50 clients and industry contacts", "Single channel", "Basic support"],
     },
     {
       id: "pro",
       name: "Pro", 
       price: "£249",
-      features: ["Up to 200 contacts", "Multi-channel", "Priority support", "Social media posts"],
+      features: ["Up to 200 clients and industry contacts", "Multi-channel", "Priority support", "Social media posts"],
     },
     {
       id: "concierge",
       name: "Concierge",
       price: "from £499",
-      features: ["Unlimited contacts", "Full service", "Dedicated account manager", "Complete campaign management"],
+      features: ["Unlimited clients and industry contacts", "Full service", "Dedicated account manager", "Complete campaign management"],
     },
   ];
 
@@ -153,8 +153,11 @@ const ReturnJourney = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-subtle">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+      {/* Background pattern */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
           <Button
@@ -166,8 +169,9 @@ const ReturnJourney = () => {
             Back to Home
           </Button>
           
-          <h1 className="text-4xl font-bold text-foreground mb-4">
-            Start Your Return Journey
+          <h1 className="text-4xl lg:text-5xl font-bold mb-4">
+            <span className="block text-foreground">Start Your</span>
+            <span className="gradient-text block">Return Journey</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl">
             Let's create a campaign that announces your return and re-energizes your professional network. 
@@ -179,9 +183,9 @@ const ReturnJourney = () => {
           {/* Contact List Upload */}
           <Card>
             <CardHeader>
-              <CardTitle>1. Upload Your Contact List</CardTitle>
+              <CardTitle>1. Upload Your Clients and Industry Contacts List</CardTitle>
               <CardDescription>
-                Upload your client/contact list in Excel or CSV format. We'll handle your data securely and delete files after your campaign.
+                Upload your clients and industry contacts list in Excel or CSV format. We'll handle your data securely and delete files after your campaign.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">

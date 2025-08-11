@@ -7,7 +7,7 @@ const Services = () => {
       price: "£99",
       description: "One‑time outreach for a simple, structured return",
       features: [
-        "One round of personalized outreach to up to 30 clients via your choice of SMS, email, or a social platform",
+        "One round of personalized outreach to up to 30 clients and industry contacts via your choice of SMS, email, or a social platform",
         "Ready-to-use message templates (choose your tone/style)",
         "Booking link setup support",
         "2 social media captions crafted for you, with step‑by‑step posting guidance",
@@ -25,8 +25,8 @@ const Services = () => {
       description: "Multi-channel, hands-off re-engagement for a confident comeback",
       features: [
         "Everything in Starter, PLUS:",
-        "Outreach to up to 100 clients",
-        "Multi-step campaign: 3 personalized messages per client via SMS, email, and social platform",
+        "Outreach to up to 100 clients and industry contacts",
+        "Multi-step campaign: 3 personalized messages per client and industry contact via SMS, email, and social platform",
         "Done‑for‑you social media scheduling & posting (4–6 posts, 4 weeks, using your images)",
         "Booking link integration with calendar (Google, Outlook, etc.)",
         "Client list segmentation for targeted outreach",

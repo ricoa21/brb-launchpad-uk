@@ -20,7 +20,7 @@ const Problem = () => {
             </div>
             <h3 className="text-2xl font-semibold mb-4 text-card-foreground">Lost Visibility</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Clients forget about you during extended absences, making it harder to rebuild relationships and secure new work.
+              Clients and industry contacts forget about you during extended absences, making it harder to rebuild relationships and secure new work.
             </p>
           </div>
           
