@@ -1,46 +1,48 @@
+import { Calendar, ClipboardList, MessageSquare, Camera, Rocket, Sparkles, BookOpen } from "lucide-react";
+
 const HowItWorks = () => {
   const steps = [
     {
       number: "1",
       title: "Tell Us Your Return Date",
       description: "Share your planned comeback date so we can time your outreach and posts for maximum impact.",
-      icon: "📅"
+      icon: Calendar
     },
     {
       number: "2", 
-      title: "Send Your Client List",
-      description: "Upload your past or priority client details (phone numbers and/or emails) securely. GDPR‑compliant handling. Deleted as soon as your campaign ends.",
-      icon: "📋"
+      title: "Send Your Client and Industry Contact List",
+      description: "Upload your past or priority client and industry contact details (phone numbers and/or emails) securely. GDPR‑compliant handling. Deleted as soon as your campaign ends.",
+      icon: ClipboardList
     },
     {
       number: "3",
       title: "Choose Your Package & Communication Style", 
       description: "Pick the service level that suits your needs — from a single round of outreach with a couple of social updates, to multi‑channel campaigns, to full management of messages, posts, and replies while you're away.",
-      icon: "💬"
+      icon: MessageSquare
     },
     {
       number: "4",
       title: "Provide Social Images (if using socials)",
       description: "Send 1–3 brand‑appropriate images for your posts, or we can help source/create them.",
-      icon: "📷"
+      icon: Camera
     },
     {
       number: "5", 
       title: "We Create & Launch Your 'I'M BACK' Campaign",
       description: "We prepare and send friendly, personalised messages, set up booking links, schedule posts (Pro/Concierge), and manage replies where included.",
-      icon: "🚀"
+      icon: Rocket
     },
     {
       number: "6",
       title: "You Relax — We Handle Everything",
       description: "While you're away, we keep your audience warm, reply to enquiries (Pro/Concierge), and track engagement.",
-      icon: "✨"
+      icon: Sparkles
     },
     {
       number: "7", 
       title: "Come Back to a Warm Client Base",
       description: "When you return, your diary is already filling — no awkward first messages, no starting from scratch. Just a confident, fully booked return.",
-      icon: "📖"
+      icon: BookOpen
     }
   ];
 
@@ -57,27 +59,30 @@ const HowItWorks = () => {
         </div>
         
         <div className="space-y-12">
-          {steps.map((step, index) => (
-            <div key={index} className={`flex flex-col lg:flex-row items-center gap-8 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-              <div className="flex-1 text-center lg:text-left">
-                <div className="flex items-center justify-center lg:justify-start mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
-                    {step.number}
+          {steps.map((step, index) => {
+            const IconComponent = step.icon;
+            return (
+              <div key={index} className={`flex flex-col lg:flex-row items-center gap-8 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+                <div className="flex-1 text-center lg:text-left">
+                  <div className="flex items-center justify-center lg:justify-start mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                      {step.number}
+                    </div>
+                    <h3 className="text-2xl lg:text-3xl font-bold text-foreground">{step.title}</h3>
                   </div>
-                  <h3 className="text-2xl lg:text-3xl font-bold text-foreground">{step.title}</h3>
+                  <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+                    {step.description}
+                  </p>
                 </div>
-                <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                  {step.description}
-                </p>
-              </div>
-              
-              <div className="flex-shrink-0">
-                <div className="w-32 h-32 bg-muted/30 rounded-full flex items-center justify-center text-6xl">
-                  {step.icon}
+                
+                <div className="flex-shrink-0">
+                  <div className="w-32 h-32 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-soft">
+                    <IconComponent className="w-16 h-16 text-primary" />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
         
         <div className="mt-20 text-center">
