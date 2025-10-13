@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Check, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const ServicesComparison = () => {
+  const navigate = useNavigate();
   const packages = [
     { name: "Starter", price: "£99", popular: false },
     { name: "Pro", price: "£249", popular: true },
@@ -107,17 +109,36 @@ const ServicesComparison = () => {
         {/* CTA Buttons */}
         <div className="grid grid-cols-4 gap-4 mt-8">
           <div className="col-span-1"></div>
-          {packages.map((pkg, index) => (
-            <div key={index} className="text-center">
-              <Button 
-                variant={pkg.popular ? "hero" : "default"} 
-                className="w-full"
-                size="lg"
-              >
-                Choose {pkg.name}
-              </Button>
-            </div>
-          ))}
+          <div className="text-center">
+            <Button 
+              variant="default"
+              className="w-full"
+              size="lg"
+              onClick={() => navigate("/packages/starter")}
+            >
+              View Starter Details
+            </Button>
+          </div>
+          <div className="text-center">
+            <Button 
+              variant="hero"
+              className="w-full"
+              size="lg"
+              onClick={() => navigate("/packages/pro")}
+            >
+              View Pro Details
+            </Button>
+          </div>
+          <div className="text-center">
+            <Button 
+              variant="default"
+              className="w-full"
+              size="lg"
+              onClick={() => navigate("/packages/concierge")}
+            >
+              View Concierge Details
+            </Button>
+          </div>
         </div>
       </div>
     </section>
