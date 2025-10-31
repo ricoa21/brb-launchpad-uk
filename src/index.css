@@ -14,20 +14,20 @@
     --popover: 0 0% 100%;
     --popover-foreground: 225 15% 15%;
 
-    /* Brand Colors - Professional blue to energetic coral */
-    --primary: 217 91% 60%; /* Professional blue */
-    --primary-foreground: 0 0% 98%;
-    --primary-light: 217 91% 70%;
-    --primary-dark: 217 91% 50%;
+    /* Brand Colors - Chronicle-inspired purple */
+    --primary: 255 100% 73%; /* #7755FF Purple */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 255 100% 80%;
+    --primary-dark: 255 100% 65%;
 
-    /* Secondary - Warm coral for energy/growth */
-    --secondary: 14 91% 65%; /* Coral */
-    --secondary-foreground: 0 0% 98%;
-    --secondary-light: 14 91% 75%;
+    /* Secondary - Complementary indigo */
+    --secondary: 245 80% 65%; /* Indigo */
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 245 80% 75%;
 
-    /* Accent - Success green */
+    /* Accent - Success check */
     --accent: 142 71% 45%; /* Success green */
-    --accent-foreground: 0 0% 98%;
+    --accent-foreground: 0 0% 100%;
 
     /* Neutral tones */
     --muted: 210 20% 96%;
@@ -119,7 +119,8 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 }
 
