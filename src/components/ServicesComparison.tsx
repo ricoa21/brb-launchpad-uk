@@ -1,185 +1,200 @@
-import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Check, Sparkles } from "lucide-react";
+
+const packages = [
+  {
+    name: "Starter",
+    monthlyPrice: 99,
+    annualPrice: 950,
+    description: "Your simple comeback",
+    features: [
+      "100 contacts",
+      "3 custom messages",
+      "2 Instagram posts",
+      "Email support",
+      "Campaign dashboard"
+    ],
+    popular: false
+  },
+  {
+    name: "Pro",
+    monthlyPrice: 249,
+    annualPrice: 2390,
+    description: "Hands-off re-engagement",
+    features: [
+      "250 contacts",
+      "4-message campaign",
+      "5 Instagram + LinkedIn posts",
+      "Priority support",
+      "Creative network access",
+      "Advanced analytics"
+    ],
+    popular: true
+  },
+  {
+    name: "Concierge",
+    monthlyPrice: 499,
+    annualPrice: 4790,
+    description: "Full-service growth",
+    features: [
+      "500+ contacts",
+      "Unlimited messages",
+      "Complete social management",
+      "Dedicated success manager",
+      "Custom strategy",
+      "White-glove service"
+    ],
+    popular: false
+  }
+];
 
 const ServicesComparison = () => {
-  const navigate = useNavigate();
   const [billingPeriod, setBillingPeriod] = useState<"monthly" | "annual">("monthly");
-
-  const packages = [
-    { 
-      name: "Starter", 
-      monthlyPrice: 99,
-      annualPrice: 89,
-      popular: false,
-      description: "Perfect for testing the waters",
-      features: [
-        "100 contacts reached",
-        "3 custom messages",
-        "2 Instagram posts",
-        "Email support",
-        "GDPR compliant",
-        "Data deletion after campaign"
-      ]
-    },
-    { 
-      name: "Pro", 
-      monthlyPrice: 249,
-      annualPrice: 225,
-      popular: true,
-      description: "Most popular choice for serious relaunches",
-      features: [
-        "250 contacts reached",
-        "4 custom messages",
-        "4-6 Instagram posts",
-        "Multi-channel support (Instagram & Facebook)",
-        "Priority help",
-        "Creative network included",
-        "Content scheduling",
-        "Email support",
-        "GDPR compliant",
-        "Data deletion after campaign"
-      ]
-    },
-    { 
-      name: "Concierge", 
-      monthlyPrice: 499,
-      annualPrice: 449,
-      popular: false,
-      description: "Full-service, white-glove experience",
-      features: [
-        "500+ contacts reached",
-        "Unlimited custom messages",
-        "Custom social media plan",
-        "Multi-channel support (Instagram & Facebook)",
-        "Dedicated success manager",
-        "Custom onboarding",
-        "Priority help",
-        "Creative network included",
-        "Content scheduling",
-        "Email support",
-        "GDPR compliant",
-        "Data deletion after campaign"
-      ]
-    }
-  ];
 
   const getPrice = (pkg: typeof packages[0]) => {
     const price = billingPeriod === "monthly" ? pkg.monthlyPrice : pkg.annualPrice;
-    return pkg.name === "Concierge" ? `from £${price}` : `£${price}`;
+    return pkg.name === "Concierge" ? `£${price}+` : `£${price}`;
   };
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Headline */}
-        <div className="text-center mb-16 max-w-4xl mx-auto">
-          <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight text-foreground">
+    <section className="py-32 px-4 bg-background">
+      <div className="container mx-auto max-w-7xl">
+        {/* Header */}
+        <div className="text-center mb-20 space-y-6">
+          <h1 className="text-6xl md:text-7xl font-bold tracking-tight leading-tight">
             I may have been away but I{" "}
-            <span className="text-primary">Never</span>{" "}
-            really left
+            <span className="text-primary inline-flex items-center gap-2">
+              Never
+              <Sparkles className="w-10 h-10 animate-pulse" />
+            </span>
+            {" "}really left
           </h1>
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            Choose the perfect package to relaunch your freelance career
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-light">
+            Choose the plan that brings you back
           </p>
         </div>
 
         {/* Billing Toggle */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex items-center bg-muted rounded-full p-1.5 gap-1">
-            <button
-              onClick={() => setBillingPeriod("monthly")}
-              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all ${
-                billingPeriod === "monthly"
-                  ? "bg-primary text-white shadow-md"
-                  : "text-muted-foreground hover:text-foreground"
+        <div className="flex justify-center items-center gap-4 mb-16">
+          <button
+            onClick={() => setBillingPeriod("monthly")}
+            className={`text-base font-medium transition-colors ${
+              billingPeriod === "monthly" 
+                ? "text-foreground" 
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            Monthly
+          </button>
+          <button
+            onClick={() => 
+              setBillingPeriod(billingPeriod === "monthly" ? "annual" : "monthly")
+            }
+            className="relative w-12 h-6 rounded-full bg-muted transition-colors hover:bg-muted/80"
+            aria-label="Toggle billing period"
+          >
+            <span 
+              className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-primary transition-transform ${
+                billingPeriod === "annual" ? "translate-x-6" : ""
               }`}
-            >
-              Monthly
-            </button>
-            <button
-              onClick={() => setBillingPeriod("annual")}
-              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all ${
-                billingPeriod === "annual"
-                  ? "bg-primary text-white shadow-md"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              Annual
-              <span className="ml-2 text-xs bg-accent text-white px-2 py-0.5 rounded-full">
-                Save 10%
-              </span>
-            </button>
-          </div>
+            />
+          </button>
+          <button
+            onClick={() => setBillingPeriod("annual")}
+            className={`text-base font-medium transition-colors ${
+              billingPeriod === "annual" 
+                ? "text-foreground" 
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            Annual
+            <span className="ml-2 text-sm text-primary font-normal">(save 20%)</span>
+          </button>
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {packages.map((pkg, index) => (
-            <div
-              key={index}
-              className={`relative rounded-3xl p-8 transition-all duration-300 ${
+        <div className="grid md:grid-cols-3 gap-6 mb-20">
+          {packages.map((pkg) => (
+            <Card
+              key={pkg.name}
+              className={`relative p-8 transition-all duration-300 border ${
                 pkg.popular
-                  ? "bg-gradient-to-br from-primary/5 to-secondary/5 border-2 border-primary shadow-xl scale-105 z-10"
-                  : "bg-white border-2 border-border hover:border-primary/30 shadow-lg hover:shadow-xl"
+                  ? "bg-card border-primary/50"
+                  : "bg-card border-border hover:border-border/60"
               }`}
             >
               {pkg.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white px-6 py-1.5 rounded-full text-sm font-bold shadow-md">
-                  Best Value
+                <div className="absolute -top-3 left-8">
+                  <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-medium">
+                    Popular
+                  </span>
                 </div>
               )}
 
-              {/* Package Header */}
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold mb-2 text-foreground">
-                  {pkg.name}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-6">
-                  {pkg.description}
-                </p>
-                <div className="mb-6">
-                  <div className="text-5xl font-bold text-foreground mb-1">
-                    {getPrice(pkg)}
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    per {billingPeriod === "monthly" ? "month" : "year"}
-                  </div>
-                </div>
-                <Button
-                  className="w-full h-12 rounded-xl font-semibold text-base shadow-md hover:shadow-lg transition-all"
-                  variant={pkg.popular ? "default" : "outline"}
-                  onClick={() => navigate(`/packages/${pkg.name.toLowerCase()}`)}
-                >
-                  {pkg.name === "Concierge" ? "Contact for Proposal" : "Get Started"}
-                </Button>
-              </div>
-
-              {/* Features List */}
-              <div className="space-y-4">
-                {pkg.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center mt-0.5">
-                      <Check className="w-3.5 h-3.5 text-accent" strokeWidth={3} />
-                    </div>
-                    <span className="text-sm text-card-foreground leading-relaxed">
-                      {feature}
+              <div className="space-y-8">
+                {/* Header */}
+                <div>
+                  <h3 className="text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wide">
+                    {pkg.name}
+                  </h3>
+                  <div className="flex items-baseline gap-1 mb-3">
+                    <span className="text-5xl font-bold tracking-tight">
+                      {getPrice(pkg)}
                     </span>
                   </div>
-                ))}
+                  <p className="text-sm text-muted-foreground">
+                    {billingPeriod === "monthly" ? "per month" : "per year"}
+                  </p>
+                  <p className="text-base text-foreground/80 mt-4">
+                    {pkg.description}
+                  </p>
+                </div>
+
+                {/* Features */}
+                <div className="space-y-3">
+                  <p className="text-sm font-medium text-muted-foreground">
+                    {pkg.name === "Pro" ? "Everything in Starter, and:" : "Includes:"}
+                  </p>
+                  {pkg.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-start gap-3">
+                      <Check className="w-4 h-4 text-foreground shrink-0 mt-1" />
+                      <span className="text-sm text-foreground/90 leading-relaxed">
+                        {feature}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* CTA */}
+                <Button 
+                  className={`w-full h-11 text-sm font-medium ${
+                    pkg.popular 
+                      ? "bg-foreground text-background hover:bg-foreground/90" 
+                      : "bg-transparent border border-border text-foreground hover:bg-muted"
+                  }`}
+                  onClick={() => window.location.href = `/${pkg.name.toLowerCase()}-package`}
+                >
+                  {pkg.name === "Concierge" ? "Contact us" : `Get ${pkg.name}`}
+                </Button>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
 
-        {/* Additional info */}
-        <div className="text-center mt-16">
-          <p className="text-muted-foreground text-sm">
-            All packages include GDPR compliance and secure data handling.
-            <br />
-            Your information is deleted within 7 days after campaign completion.
+        {/* Footer Info */}
+        <div className="text-center space-y-6 max-w-2xl mx-auto pt-8">
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Need more capabilities for your business?
           </p>
+          <Button 
+            variant="outline" 
+            className="border-border text-foreground hover:bg-muted"
+            onClick={() => window.location.href = 'mailto:hello@ineverleft.co.uk'}
+          >
+            Contact us
+          </Button>
         </div>
       </div>
     </section>
