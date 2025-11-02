@@ -59,18 +59,15 @@ const ServicesComparison = () => {
         {/* Header */}
         <div className="text-center mb-20 space-y-6">
           <h1 className="text-6xl md:text-7xl font-bold tracking-tight leading-tight">
-            Because I{" "}
+            I may have been away but I{" "}
             <span className="text-primary inline-flex items-center gap-2">
-              never really
+              Never
               <Sparkles className="w-10 h-10 animate-pulse" />
             </span>
-            {" "}left
+            {" "}really left
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-light">
-            Welcome to the comeback revolution.
-          </p>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-light">
-            Built for freelancers to enjoy being free.
+            Choose the plan that brings you back
           </p>
         </div>
 
