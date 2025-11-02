@@ -15,13 +15,7 @@ const Hero = () => {
             
             <div className="space-y-6">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
-                Because I never really left
-                <span className="block mt-4 text-3xl sm:text-4xl lg:text-5xl font-light text-foreground/80">
-                  Welcome to the comeback revolution.
-                </span>
-                <span className="block mt-4 text-2xl sm:text-3xl lg:text-4xl font-light text-foreground/80">
-                  Built for freelancers to enjoy being free.
-                </span>
+                I may have been away but I never really left
               </h1>
               
               <p className="text-lg sm:text-xl font-semibold leading-relaxed max-w-2xl">
