@@ -15,7 +15,7 @@ const Hero = () => {
             
             <div className="space-y-6">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
-                Welcome to the Comeback Revolution: Because I never <em className="italic font-bold">really</em> left
+                Welcome to the Comeback Revolution. Because you never <em className="italic font-bold">really</em> left.
               </h1>
               
               <p className="text-lg sm:text-xl font-semibold leading-relaxed max-w-2xl mt-6">

@@ -135,7 +135,7 @@ const ServicesComparison = () => {
                   }`}
                   onClick={() => window.location.href = `/${pkg.name.toLowerCase()}-package`}
                 >
-                  {pkg.name === "Concierge" ? "Contact us" : `Get ${pkg.name}`}
+                  {pkg.name === "Concierge" ? "Find out more" : `Get ${pkg.name}`}
                 </Button>
               </div>
             </Card>
