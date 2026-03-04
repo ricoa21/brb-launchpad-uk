@@ -8,7 +8,7 @@ const StarterPackage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Starter - INL";
+    document.title = "Starter — I Never Left";
   }, []);
 
   return (

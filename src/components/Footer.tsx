@@ -12,7 +12,7 @@ const Footer = () => {
             </h2>
             <p className="text-xl text-background/80 mb-8 leading-relaxed">
               Don't let another month pass wondering "what if." Your clients are waiting for you to return. 
-              Let I Never Left help you do it with confidence and style.
+              Let us help you do it with confidence and style.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="hero" size="lg" className="text-lg px-8 py-4">
@@ -78,7 +78,7 @@ const Footer = () => {
         
         <div className="border-t border-background/20 mt-16 pt-8 text-center">
           <p className="text-background/60">
-            © 2024 I Never Left. Helping UK freelancers return with confidence. All rights reserved.
+            © 2025 I Never Left. Helping UK freelancers return with confidence. All rights reserved.
           </p>
         </div>
       </div>
