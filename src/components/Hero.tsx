@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-backpack.jpg";
 
 const Hero = () => {
   return (
@@ -38,14 +37,16 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right: Hero Image */}
+          {/* Right: Abstract Gradient Shape */}
           <div className="relative lg:block">
-            <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl border border-border">
-              <img 
-                src={heroImage}
-                alt="Travel backpack symbolizing return from break or sabbatical"
-                className="w-full h-full object-cover"
-              />
+            <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-64 h-64 rounded-full bg-primary/20 blur-3xl" />
+              </div>
+              <div className="absolute top-8 right-12 w-40 h-40 rounded-full border border-primary/30" />
+              <div className="absolute bottom-12 left-8 w-24 h-24 rounded-full bg-primary/15 blur-xl" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rotate-45 border border-primary/20 rounded-2xl" />
             </div>
           </div>
         </div>

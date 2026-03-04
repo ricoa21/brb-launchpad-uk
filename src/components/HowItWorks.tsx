@@ -1,40 +1,22 @@
-import { MessageCircle, Calendar, Target, Zap, TrendingUp, Upload } from "lucide-react";
+import { Upload, MessageCircle, TrendingUp } from "lucide-react";
 
 const steps = [
   {
     number: 1,
-    title: "Tell us your leaving date and return date",
-    description: "Share your timeline and we'll plan everything around it.",
-    icon: Calendar,
-  },
-  {
-    number: 2,
-    title: "Upload your client list to our simple template",
-    description: "Easy-to-use template helps organize your contacts for outreach.",
+    title: "Tell us your dates and upload your client list",
+    description: "Share your timeline and contacts — our simple template makes it easy to get started.",
     icon: Upload,
   },
   {
-    number: 3,
-    title: "Customize your relaunch plan with your preferences",
-    description: "Choose your channels, tone, and style to match your brand.",
-    icon: Target,
-  },
-  {
-    number: 4,
-    title: "Multi-channel outreach tailored to your audience",
-    description: "We craft personalized messages across email, SMS, and social.",
+    number: 2,
+    title: "We craft and send your personalised multi-channel campaign",
+    description: "Tailored messages across email, SMS, and social — matched to your tone and brand.",
     icon: MessageCircle,
   },
   {
-    number: 5,
-    title: "Reconnect with clients effortlessly",
-    description: "Your network gets re-engaged while you focus on time off.",
-    icon: Zap,
-  },
-  {
-    number: 6,
-    title: "Track your comeback progress in real-time",
-    description: "Monitor engagement and bookings as they come in.",
+    number: 3,
+    title: "Track bookings and reconnect as clients respond",
+    description: "Monitor engagement in real-time and welcome clients back effortlessly.",
     icon: TrendingUp,
   },
 ];
@@ -49,17 +31,17 @@ const HowItWorks = () => {
           </h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {steps.map((step) => (
             <div 
               key={step.number} 
-              className="flex flex-col items-center text-center space-y-4 p-6"
+              className="flex flex-col items-center text-center space-y-4 p-8"
             >
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-2">
                 <step.icon className="w-8 h-8 text-primary" />
               </div>
               <div className="space-y-2">
-                <h3 className="text-base font-semibold leading-tight">
+                <h3 className="text-lg font-semibold leading-tight">
                   {step.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">

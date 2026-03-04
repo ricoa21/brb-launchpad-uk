@@ -21,7 +21,7 @@ const packages = [
   {
     name: "Pro",
     price: "£249",
-    popular: false,
+    popular: true,
     description: "Hands-off relaunch",
     breakLength: "",
     features: [
