@@ -1,4 +1,4 @@
-import { Palette, Briefcase, Heart, Sparkles, Baby, ShoppingBag } from "lucide-react";
+import { Palette, Briefcase, Heart, Sparkles, Baby } from "lucide-react";
 
 const Audience = () => {
   const freelancerTypes = [
