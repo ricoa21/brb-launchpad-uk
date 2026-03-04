@@ -8,7 +8,7 @@ const ProPackage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Pro - INL";
+    document.title = "Pro — I Never Left";
   }, []);
 
   return (

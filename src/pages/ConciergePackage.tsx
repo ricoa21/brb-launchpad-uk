@@ -8,7 +8,7 @@ const ConciergePackage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Concierge - INL";
+    document.title = "Concierge — I Never Left";
   }, []);
 
   return (
