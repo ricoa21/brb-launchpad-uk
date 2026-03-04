@@ -23,19 +23,9 @@ const Audience = () => {
       description: "A friendly, approachable category for personal trainers, wellness guides, and holistic practitioners inspiring healthier living."
     },
     {
-      title: "Personal Care & Beauty Specialists",
-      icon: Sparkles,
-      description: "Barbers, hairstylists, makeup artists, and body care experts reconnecting with clients for personalized services."
-    },
-    {
       title: "Parents Returning To Work After Maternity",
       icon: Baby,
       description: "Professionals navigating the balance of childcare and career, rebuilding client relationships with confidence after maternity leave."
-    },
-    {
-      title: "Market Vendors & Side Hustlers",
-      icon: ShoppingBag,
-      description: "Individuals who run secondary or part-time freelance businesses, often selling handmade goods, crafts, food, clothing, or other products at independent markets or as side hustles—like clothing creators, chefs, candle makers, and more. This genre supports freelancers balancing multiple income streams or community market participation."
     }
   ];
 
