@@ -55,7 +55,10 @@ const Audience = () => {
                 className="p-8 bg-card rounded-2xl border border-border hover:border-primary/50 transition-all duration-300 group"
               >
                 <div className="mb-6 inline-flex p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
-                  <IconComponent className="w-8 h-8 text-primary" strokeWidth={1.5} />
+                  <IconComponent 
+                    className="w-8 h-8 text-primary drop-shadow-[0_0_8px_hsl(262,83%,68%)] group-hover:animate-pulse" 
+                    strokeWidth={1.5} 
+                  />
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-card-foreground">{type.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">{type.description}</p>
