@@ -22,7 +22,7 @@ const packages = [
     name: "Pro",
     price: "£249",
     popular: true,
-    description: "Hands-off relaunch",
+   description: "Keep warm + full return campaign",
     breakLength: "",
     features: [
       "Everything in Starter",
@@ -31,7 +31,8 @@ const packages = [
       "Google My Business setup",
       "WhatsApp integration",
       "Engagement tracking",
-      "Ongoing monthly support after return*",
+      "1 keep-warm IG post per month while you're away (up to 12 months)",
+"3 months engagement support after your return",
     ],
   },
   {
