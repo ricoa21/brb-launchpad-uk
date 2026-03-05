@@ -201,6 +201,27 @@ const StarterPackage = () => {
         </div>
       </section>
 
+      {/* How the timing works */}
+      <section className="py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center mb-12 text-foreground">How the timing works</h2>
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="p-8 bg-card rounded-xl border border-border">
+              <div className="text-primary font-bold mb-2">Before you leave</div>
+              <p className="text-muted-foreground">Message 1 goes out by email. Clients know you're taking a break and when you'll be back.</p>
+            </div>
+            <div className="p-8 bg-card rounded-xl border border-border">
+              <div className="text-primary font-bold mb-2">4 weeks before return</div>
+              <p className="text-muted-foreground">Message 2 goes out by SMS. Short, personal, and gets noticed. Clients start thinking about rebooking.</p>
+            </div>
+            <div className="p-8 bg-card rounded-xl border border-border">
+              <div className="text-primary font-bold mb-2">Return day</div>
+              <p className="text-muted-foreground">Message 3 fires by email and SMS. 2 Instagram posts sent to you ready to publish. Bookings open.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Good to know */}
       <section className="py-24 bg-muted/20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -229,26 +250,7 @@ const StarterPackage = () => {
         </div>
       </section>
 
-      {/* How the timing works */}
-      <section className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-12 text-foreground">How the timing works</h2>
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="p-8 bg-card rounded-xl border border-border">
-              <div className="text-primary font-bold mb-2">Before you leave</div>
-              <p className="text-muted-foreground">Message 1 goes out by email. Clients know you're taking a break and when you'll be back.</p>
-            </div>
-            <div className="p-8 bg-card rounded-xl border border-border">
-              <div className="text-primary font-bold mb-2">4 weeks before return</div>
-              <p className="text-muted-foreground">Message 2 goes out by SMS. Short, personal, and gets noticed. Clients start thinking about rebooking.</p>
-            </div>
-            <div className="p-8 bg-card rounded-xl border border-border">
-              <div className="text-primary font-bold mb-2">Return day</div>
-              <p className="text-muted-foreground">Message 3 fires by email and SMS. 2 Instagram posts sent to you ready to publish. Bookings open.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* CTA */}
       <section className="py-24 bg-gradient-to-br from-primary to-secondary text-white">
