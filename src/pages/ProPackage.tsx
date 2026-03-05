@@ -82,9 +82,12 @@ const ProPackage = () => {
       {/* Who It's For */}
       <section className="py-24 bg-muted/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-14 text-foreground">
+          <h2 className="text-4xl font-bold text-center mb-6 text-foreground">
             Who It's For
           </h2>
+          <p className="text-lg text-muted-foreground text-center max-w-2xl mx-auto mb-14">
+            Whether you've been on a big adventure, on maternity leave, or taking time for yourself — you've earned this comeback.
+          </p>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <Card className="p-8 border-border">
               <Users className="w-8 h-8 text-primary mb-5" />
