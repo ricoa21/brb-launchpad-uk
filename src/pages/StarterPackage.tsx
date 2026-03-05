@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft, Mail, Clock, Instagram, Users, Zap } from "lucide-react";
+import { ArrowLeft, Mail, Clock, Instagram, Users, Zap, Quote } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Footer from "@/components/Footer";
@@ -50,6 +50,24 @@ const StarterPackage = () => {
     {
       question: "Is this a one-off payment or a subscription?",
       answer: "Starter is a one-off payment of £99. No monthly fees, no hidden costs, no surprises."
+    },
+  ];
+
+  const examples = [
+    {
+      name: "Marcus",
+      role: "Barber — 9 months away",
+      message: "Hey Jamie, it's Marcus — just wanted to let you know I'm back in the chair from 1st October. You've always been one of my regulars and I'd love to have you back. First slots are already going — grab yours here: [Link]"
+    },
+    {
+      name: "Priya",
+      role: "Freelance Designer — returning after maternity leave",
+      message: "Hi Sarah, it's Priya — I'm officially back after maternity leave and ready to take on new projects from November. I'd love to reconnect and hear what you've been working on. Here's my updated booking link: [Link]"
+    },
+    {
+      name: "James",
+      role: "Chiropractor — returning after sabbatical",
+      message: "Hi Tom, it's James — I'm back in the clinic from 3rd November and wanted to reach out to my regulars first. If your back's been giving you grief while I've been away, let's get you booked in. Here's my link: [Link]"
     },
   ];
 
@@ -145,8 +163,46 @@ const StarterPackage = () => {
         </div>
       </section>
 
-      {/* Good to know */}
+      {/* What it actually looks like */}
       <section className="py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center mb-4 text-foreground">
+            What it actually looks like
+          </h2>
+          <p className="text-lg text-muted-foreground text-center max-w-2xl mx-auto mb-14">
+            Every message is written in your voice, for your clients. Here's what that looks like in the real world.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {examples.map((example) => (
+              <div
+                key={example.name}
+                className="bg-card rounded-2xl border border-border p-8 flex flex-col gap-6"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span className="text-primary font-bold text-sm">{example.name[0]}</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">{example.name}</p>
+                    <p className="text-xs text-muted-foreground">{example.role}</p>
+                  </div>
+                </div>
+                <div className="relative">
+                  <div className="absolute -top-2 -left-1 text-primary/20">
+                    <Quote className="w-8 h-8" />
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed italic pl-4 border-l-2 border-primary/30">
+                    {example.message}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Good to know */}
+      <section className="py-24 bg-muted/20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-4 text-foreground">
             Good to know
@@ -174,7 +230,7 @@ const StarterPackage = () => {
       </section>
 
       {/* How the timing works */}
-      <section className="py-24 bg-muted/20">
+      <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-12 text-foreground">How the timing works</h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -190,22 +246,6 @@ const StarterPackage = () => {
               <div className="text-primary font-bold mb-2">Return day</div>
               <p className="text-muted-foreground">Message 3 fires by email and SMS. 2 Instagram posts sent to you ready to publish. Bookings open.</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Sample Message */}
-      <section className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-14 text-foreground">
-            A message that actually sounds like you
-          </h2>
-          <div className="max-w-2xl mx-auto">
-            <blockquote className="bg-card p-10 rounded-xl border-l-4 border-primary shadow-soft">
-              <p className="text-lg text-card-foreground italic leading-relaxed">
-                "Hey [Client Name], it's [Your Name] — I'm back and ready to help with [Your Service]. I'd love to reconnect. Here's my booking link: [Link]"
-              </p>
-            </blockquote>
           </div>
         </div>
       </section>
