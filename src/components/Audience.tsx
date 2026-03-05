@@ -1,31 +1,36 @@
-import { Palette, Briefcase, Heart, Sparkles, Baby } from "lucide-react";
+import { Briefcase, Heart, Sparkles, Baby, TrendingUp } from "lucide-react";
 
 const Audience = () => {
   const freelancerTypes = [
     {
-      title: "Creative Professionals & Content Creators",
+      title: "Hair, Beauty & Personal Care",
       icon: Sparkles,
-      description: "Visual artists, writers, videographers, and content creators reconnecting with clients and audiences for fresh creative projects."
+      description: "Barbers, hairstylists, nail technicians, makeup artists and beauty therapists — your clients are loyal, they just need reminding you're back."
     },
     {
-      title: "Design & Brand Experts", 
-      icon: Palette,
-      description: "Designers and branding specialists revitalizing their professional presence to deliver innovative visual and brand solutions."
-    },
-    {
-      title: "Consultants & Advisors",
-      icon: Briefcase, 
-      description: "Experienced industry consultants returning to offer strategic insights and project leadership."
-    },
-    {
-      title: "Wellness & Lifestyle Coaches",
+      title: "Health, Wellness & Movement",
       icon: Heart,
-      description: "A friendly, approachable category for personal trainers, wellness guides, and holistic practitioners inspiring healthier living."
+      description: "Personal trainers, physiotherapists, chiropractors, massage therapists and yoga instructors — people who've been waiting for you to return to their routine."
     },
     {
-      title: "Parents Returning To Work After Maternity",
+      title: "Trades & Local Services",
+      icon: Briefcase,
+      description: "Window cleaners, gardeners, dog walkers, handypeople and cleaners — regular clients who'll rebook the moment they hear from you."
+    },
+    {
+      title: "Creative Professionals & Freelancers",
+      icon: Sparkles,
+      description: "Photographers, designers, videographers, copywriters and content creators reconnecting with clients for fresh projects."
+    },
+    {
+      title: "Parents Returning After Maternity",
       icon: Baby,
-      description: "Professionals navigating the balance of childcare and career, rebuilding client relationships with confidence after maternity leave."
+      description: "You grew a human. Now you're ready to get back to work. We'll make sure your clients are ready and waiting when you are."
+    },
+    {
+      title: "Consultants & Coaches",
+      icon: TrendingUp,
+      description: "Business consultants, life coaches, and advisors returning to offer their expertise — your reputation hasn't gone anywhere, let's remind people you're back."
     }
   ];
 
