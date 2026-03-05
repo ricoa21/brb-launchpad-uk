@@ -42,8 +42,7 @@ const Audience = () => {
             Built for UK Freelancers Like You
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
-            Whether you've been traveling the world, raising a family, or taking time for personal growth, 
-            we understand the unique challenges facing UK freelancers.
+            Real jobs, real people, real comebacks. Built for the freelancers and sole traders who don't have a marketing team — just a great reputation and clients worth reconnecting with.
           </p>
         </div>
         
