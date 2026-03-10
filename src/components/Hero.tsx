@@ -1,47 +1,191 @@
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
-const messages = [
+const phases = [
   {
-    name: "Marcus",
-    role: "Barber",
-    initial: "M",
-    text: "Hey Jamie, it's Marcus — I'm back in the chair from 1st October. First slots are already going — grab yours here:",
-    type: "SMS",
-    delay: 0,
+    id: "setup",
+    label: "Campaign created",
+    duration: 2500,
+    content: (
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          <span className="text-xs font-semibold text-primary uppercase tracking-widest">Setting up</span>
+        </div>
+        <div className="bg-card/80 border border-border rounded-xl px-4 py-3">
+          <p className="text-xs text-muted-foreground mb-1">Client</p>
+          <p className="text-sm font-semibold text-foreground">Marcus — Barber</p>
+          <p className="text-xs text-muted-foreground mt-2">100 contacts imported. Campaign scheduled. Messages approved.</p>
+        </div>
+        <div className="flex items-center gap-2 mt-1">
+          <div className="h-px flex-1 bg-primary/20" />
+          <span className="text-xs text-primary font-medium">✦ I Never Left</span>
+          <div className="h-px flex-1 bg-primary/20" />
+        </div>
+      </div>
+    ),
   },
   {
-    name: "Priya",
-    role: "Designer",
-    initial: "P",
-    text: "Hi Sarah, it's Priya — I'm officially back after maternity leave and ready to take on new projects from November.",
-    type: "Email",
-    delay: 2000,
+    id: "leave",
+    label: "Before you leave",
+    duration: 2500,
+    content: (
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          <span className="text-xs font-semibold text-primary uppercase tracking-widest">Message 1 — Sent</span>
+        </div>
+        <div className="bg-card/80 border border-border rounded-xl px-4 py-3">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-medium">Email</span>
+            <span className="text-xs text-muted-foreground">100 contacts</span>
+            <span className="text-xs text-primary ml-auto">✓ Delivered</span>
+          </div>
+          <p className="text-xs text-muted-foreground leading-relaxed italic">
+            "Hey Jamie — Marcus here. I'm taking a well-earned break and will be back in the chair from 1st October. I'll be in touch closer to the time..."
+          </p>
+        </div>
+        <div className="flex items-center gap-2 mt-1">
+          <div className="h-px flex-1 bg-primary/20" />
+          <span className="text-xs text-primary font-medium">✦ I Never Left</span>
+          <div className="h-px flex-1 bg-primary/20" />
+        </div>
+      </div>
+    ),
   },
   {
-    name: "James",
-    role: "Chiropractor",
-    initial: "J",
-    text: "Hi Tom, it's James — I'm back in the clinic from 3rd November. Let's get you booked in:",
-    type: "SMS",
-    delay: 4000,
+    id: "warmth",
+    label: "Months pass",
+    duration: 2500,
+    content: (
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          <span className="text-xs font-semibold text-primary uppercase tracking-widest">Keeping warm</span>
+        </div>
+        <div className="grid grid-cols-3 gap-2">
+          {["Month 1", "Month 3", "Month 6"].map((m, i) => (
+            <div key={m} className="bg-card/80 border border-border rounded-xl px-3 py-3 text-center">
+              <div className="text-xs text-muted-foreground mb-1">{m}</div>
+              <div className="text-xs font-semibold text-primary">Post sent</div>
+              <div className="text-xs text-primary mt-1">✓</div>
+            </div>
+          ))}
+        </div>
+        <div className="bg-card/80 border border-primary/20 rounded-xl px-4 py-2">
+          <p className="text-xs text-muted-foreground text-center">Audience staying warm. No effort from Marcus.</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="h-px flex-1 bg-primary/20" />
+          <span className="text-xs text-primary font-medium">✦ I Never Left</span>
+          <div className="h-px flex-1 bg-primary/20" />
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "countdown",
+    label: "4 weeks to go",
+    duration: 2500,
+    content: (
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          <span className="text-xs font-semibold text-primary uppercase tracking-widest">Message 2 — Sent</span>
+        </div>
+        <div className="bg-card/80 border border-border rounded-xl px-4 py-3">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-medium">SMS</span>
+            <span className="text-xs text-muted-foreground">100 contacts</span>
+            <span className="text-xs text-primary ml-auto">✓ Delivered</span>
+          </div>
+          <p className="text-xs text-muted-foreground leading-relaxed italic">
+            "Hey Jamie — Marcus here. Back in the chair in 4 weeks. First slots are already going — I wanted you to know first: [Link]"
+          </p>
+        </div>
+        <div className="flex items-center gap-2 mt-1">
+          <div className="h-px flex-1 bg-primary/20" />
+          <span className="text-xs text-primary font-medium">✦ I Never Left</span>
+          <div className="h-px flex-1 bg-primary/20" />
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "return",
+    label: "Return day",
+    duration: 2500,
+    content: (
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          <span className="text-xs font-semibold text-primary uppercase tracking-widest">Message 3 — Fired</span>
+        </div>
+        <div className="bg-card/80 border border-border rounded-xl px-4 py-3">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-medium">Email + SMS</span>
+            <span className="text-xs text-muted-foreground">100 contacts</span>
+            <span className="text-xs text-primary ml-auto">✓ Delivered</span>
+          </div>
+          <p className="text-xs text-muted-foreground leading-relaxed italic">
+            "Hey Jamie — I'm back. First slots are live right now. You've always been one of my regulars — grab yours here: [Link]"
+          </p>
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          <div className="bg-primary/10 border border-primary/20 rounded-xl px-3 py-2 text-center">
+            <div className="text-xs font-bold text-primary">12</div>
+            <div className="text-xs text-muted-foreground">Bookings</div>
+          </div>
+          <div className="bg-primary/10 border border-primary/20 rounded-xl px-3 py-2 text-center">
+            <div className="text-xs font-bold text-primary">94%</div>
+            <div className="text-xs text-muted-foreground">Delivered</div>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "never-left",
+    label: "Welcome back",
+    duration: 3000,
+    content: (
+      <div className="flex flex-col items-center justify-center gap-4 py-4">
+        <div className="text-4xl font-bold text-primary animate-pulse">✦</div>
+        <div className="text-center">
+          <p className="text-lg font-bold text-foreground leading-tight">Welcome to the</p>
+          <p className="text-lg font-bold text-primary leading-tight">Comeback Revolution.</p>
+        </div>
+        <p className="text-xs text-muted-foreground text-center max-w-48 leading-relaxed">
+          Marcus never really left. Neither did his clients.
+        </p>
+        <div className="flex items-center gap-2 mt-2">
+          <div className="h-px w-12 bg-primary/30" />
+          <span className="text-xs text-primary font-semibold tracking-widest uppercase">I Never Left</span>
+          <div className="h-px w-12 bg-primary/30" />
+        </div>
+      </div>
+    ),
   },
 ];
 
 const Hero = () => {
-  const [visible, setVisible] = useState([false, false, false]);
+  const [currentPhase, setCurrentPhase] = useState(0);
+  const [animating, setAnimating] = useState(true);
 
   useEffect(() => {
-    messages.forEach((msg, i) => {
+    const advance = () => {
+      setAnimating(false);
       setTimeout(() => {
-        setVisible((prev) => {
-          const next = [...prev];
-          next[i] = true;
-          return next;
-        });
-      }, msg.delay);
-    });
-  }, []);
+        setCurrentPhase((prev) => (prev + 1) % phases.length);
+        setAnimating(true);
+      }, 400);
+    };
+
+    const timer = setTimeout(advance, phases[currentPhase].duration);
+    return () => clearTimeout(timer);
+  }, [currentPhase]);
+
+  const phase = phases[currentPhase];
 
   return (
     <section className="relative flex items-center bg-background overflow-hidden">
@@ -75,50 +219,35 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right: Message Mock */}
+          {/* Right: Animated Journey */}
           <div className="relative lg:block">
-            <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-gradient-to-br from-primary/20 via-background to-background border border-primary/20 shadow-2xl p-6 flex flex-col justify-center gap-4">
+            <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-gradient-to-br from-primary/20 via-background to-background border border-primary/20 shadow-2xl p-6 flex flex-col justify-between">
 
-              {/* Header */}
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <span className="text-xs font-semibold text-primary uppercase tracking-widest">Campaign live</span>
+              {/* Progress dots */}
+              <div className="flex items-center gap-1.5 mb-4">
+                {phases.map((p, i) => (
+                  <div
+                    key={p.id}
+                    className="h-1 rounded-full transition-all duration-500"
+                    style={{
+                      backgroundColor: i === currentPhase ? "hsl(var(--primary))" : "hsl(var(--primary) / 0.2)",
+                      width: i === currentPhase ? "24px" : "6px",
+                    }}
+                  />
+                ))}
+                <span className="ml-auto text-xs text-muted-foreground">{phase.label}</span>
               </div>
 
-              {/* Message Cards */}
-              {messages.map((msg, i) => (
-                <div
-                  key={msg.name}
-                  className="transition-all duration-700 ease-out"
-                  style={{
-                    opacity: visible[i] ? 1 : 0,
-                    transform: visible[i] ? "translateY(0)" : "translateY(12px)",
-                  }}
-                >
-                  <div className="flex items-start gap-3 bg-card/80 backdrop-blur rounded-xl border border-border px-4 py-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
-                      <span className="text-primary font-bold text-xs">{msg.initial}</span>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-xs font-semibold text-foreground">{msg.name}</span>
-                        <span className="text-xs text-muted-foreground">{msg.role}</span>
-                        <span className="ml-auto text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-medium shrink-0">{msg.type}</span>
-                      </div>
-                      <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">{msg.text}</p>
-                    </div>
-                    <div className="shrink-0 mt-1">
-                      <span className="text-xs text-primary/60">✓</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-
-              {/* Footer */}
-              <div className="mt-2 flex items-center gap-2">
-                <div className="h-px flex-1 bg-primary/10" />
-                <span className="text-xs text-muted-foreground">3 messages delivered</span>
-                <div className="h-px flex-1 bg-primary/10" />
+              {/* Phase content */}
+              <div
+                className="flex-1 flex flex-col justify-center transition-all duration-400"
+                style={{
+                  opacity: animating ? 1 : 0,
+                  transform: animating ? "translateY(0)" : "translateY(8px)",
+                  transition: "opacity 0.4s ease, transform 0.4s ease",
+                }}
+              >
+                {phase.content}
               </div>
 
             </div>
