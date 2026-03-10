@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Check, Sparkles } from "lucide-react";
@@ -9,46 +8,37 @@ const packages = [
     price: "£99",
     popular: false,
     description: "Your simple comeback",
-    breakLength: "",
     features: [
       "Outreach to 100 contacts",
-      "3 message touchpoints",
-      "Social share templates (your handle featured for easy sharing)",
-      "Booking guidance",
-      "One-off price - no ongoing fees",
+      "3 personalised messages by email and SMS",
+      "2 Instagram posts created for you to publish",
+      "One-off price — no ongoing fees",
     ],
   },
   {
     name: "Pro",
     price: "£249",
     popular: true,
-   description: "Keep warm + full return campaign",
-    breakLength: "",
+    description: "Keep warm + full return campaign",
     features: [
       "Everything in Starter",
-      "Outreach to 150 contacts",
-      "Enhanced privacy settings",
-      "Google My Business setup",
-      "WhatsApp integration",
-      "Engagement tracking",
-      "1 keep-warm IG post per month while you're away (up to 12 months)",
-"3 months engagement support after your return",
+      "Outreach to 200 contacts",
+      "1 keep-warm post per month while you are away (up to 12 months)",
+      "Return week — 4 posts across 7 days via Buffer",
+      "30 days engagement tracking after return",
     ],
   },
   {
     name: "Concierge",
     price: "From £499",
     popular: false,
-    description: "Full campaign management",
-    breakLength: "",
+    description: "Full-service relaunch",
     features: [
       "Everything in Pro",
-      "Full social media management",
-      "Pre-return, launch & post-return support",
-      "Premium content creation",
-      "Paid ads management (optional)",
-      "Dedicated account manager",
-      "Monthly ongoing costs after return*",
+      "Dedicated human account manager",
+      "Full return campaign — daily content during launch week",
+      "3 months post-return support included",
+      "Continue from £99/month after that",
     ],
   },
 ];
@@ -57,6 +47,7 @@ const ServicesComparison = () => {
   return (
     <section className="py-32 px-4 bg-background">
       <div className="container mx-auto max-w-7xl">
+
         {/* Header */}
         <div className="text-center mb-20 space-y-6">
           <h1 className="text-6xl md:text-7xl font-bold tracking-tight leading-tight">
@@ -97,16 +88,11 @@ const ServicesComparison = () => {
                   <h3 className="text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wide">
                     {pkg.name}
                   </h3>
-                   <div className="flex items-baseline gap-1 mb-3">
+                  <div className="flex items-baseline gap-1 mb-3">
                     <span className="text-5xl font-bold tracking-tight">
                       {pkg.price}
                     </span>
                   </div>
-                  {pkg.breakLength && (
-                    <p className="text-sm text-muted-foreground mb-2">
-                      {pkg.breakLength}
-                    </p>
-                  )}
                   <p className="text-base text-foreground/80 mt-4">
                     {pkg.description}
                   </p>
@@ -115,7 +101,7 @@ const ServicesComparison = () => {
                 {/* Features */}
                 <div className="space-y-3">
                   <p className="text-sm font-medium text-muted-foreground">
-                    {pkg.name === "Pro" ? "Everything in Starter, and:" : "Includes:"}
+                    {pkg.name === "Pro" ? "Everything in Starter, and:" : pkg.name === "Concierge" ? "Everything in Pro, and:" : "Includes:"}
                   </p>
                   {pkg.features.map((feature, idx) => (
                     <div key={idx} className="flex items-start gap-3">
@@ -128,10 +114,10 @@ const ServicesComparison = () => {
                 </div>
 
                 {/* CTA */}
-                <Button 
+                <Button
                   className={`w-full h-11 text-sm font-medium ${
-                    pkg.popular 
-                      ? "bg-foreground text-background hover:bg-foreground/90" 
+                    pkg.popular
+                      ? "bg-foreground text-background hover:bg-foreground/90"
                       : "bg-transparent border border-border text-foreground hover:bg-muted"
                   }`}
                   onClick={() => window.location.href = `/packages/${pkg.name.toLowerCase()}`}
@@ -146,7 +132,7 @@ const ServicesComparison = () => {
         {/* Footer Info */}
         <div className="text-center space-y-6 max-w-2xl mx-auto pt-8">
           <p className="text-sm text-muted-foreground leading-relaxed">
-            * All prices cover your time away. Pro and Concierge tiers include ongoing monthly fees once you've returned to work.
+            Starter and Pro are one-off payments. Concierge includes optional ongoing support from £99/month after your first 3 months back.
           </p>
           <p className="text-sm text-muted-foreground">
             Not sure which package is right for you?{" "}
@@ -155,6 +141,7 @@ const ServicesComparison = () => {
             </a>
           </p>
         </div>
+
       </div>
     </section>
   );
