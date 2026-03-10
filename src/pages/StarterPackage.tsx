@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft, Mail, Clock, Instagram, Users, Zap, Quote } from "lucide-react";
+import { ArrowLeft, Mail, Clock, Instagram, Users, Zap, MessageSquare } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Footer from "@/components/Footer";
@@ -33,19 +33,23 @@ const StarterPackage = () => {
     },
     {
       question: "How are the messages sent?",
-      answer: "The default sequence is Email → SMS → Email+SMS on return day, which is what we've found works best. If you'd prefer a different combination — say all email or all SMS — just let us know when you sign up and we'll tailor it for you."
+      answer: "The default sequence is Email then SMS then Email and SMS on return day, which is what we have found works best. If you would prefer a different combination — say all email or all SMS — just let us know when you sign up and we will tailor it for you."
     },
     {
       question: "Can I upgrade my plan?",
-      answer: "Yes — and you can do it at any point before your return campaign fires. If you upgrade to Pro, you'll get one keep-warm Instagram post for every month remaining in your break. So if you've got 6 months left, that's 6 posts. Upgrade earlier = more posts, more value. Just get in touch and we'll sort it. The only thing we can't do is upgrade after your final return message has gone out."
+      answer: "Yes — and you can do it at any point before your return campaign fires. If you upgrade to Pro, you will get one keep-warm Instagram post for every month remaining in your break. So if you have got 6 months left, that is 6 posts. Upgrade earlier = more posts, more value. Just get in touch and we will sort it. The only thing we cannot do is upgrade after your final return message has gone out."
     },
     {
       question: "What if my return date changes?",
-      answer: "No problem at all. Just let us know and we'll reschedule the campaign around your new date. Dates shift — we're flexible."
+      answer: "No problem at all. Just let us know and we will reschedule the campaign around your new date. Dates shift — we are flexible."
     },
     {
       question: "How do the Instagram posts work?",
-      answer: "We create both posts for you — designed, captioned, and ready to go. We'll send them straight to you to publish yourself. No password sharing, no third-party access — just you posting great content that we've made for you. Takes about 30 seconds on your end."
+      answer: "We create both posts for you — designed, captioned, and ready to go. We will send them straight to you to publish yourself. No password sharing, no third-party access — just you posting great content that we have made for you. Takes about 30 seconds on your end."
+    },
+    {
+      question: "What happens if some messages bounce or don't deliver?",
+      answer: "We send everything from verified, trusted infrastructure to keep delivery rates high. If anything bounces we will let you know straight away. You can swap in replacement contacts within 48 hours and we will resend. Worth making sure your list is up to date before we kick off."
     },
     {
       question: "Is this a one-off payment or a subscription?",
@@ -73,6 +77,7 @@ const StarterPackage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+
       {/* Hero */}
       <section className="relative py-24 bg-gradient-to-br from-primary/10 to-secondary/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -84,7 +89,6 @@ const StarterPackage = () => {
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Home
           </Button>
-
           <div className="text-center max-w-3xl mx-auto">
             <span className="inline-block bg-gradient-to-r from-primary to-secondary text-white px-5 py-1.5 rounded-full text-sm font-semibold mb-6">
               Starter
@@ -93,7 +97,7 @@ const StarterPackage = () => {
               Your Simple Comeback
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              You've been away. We make sure your clients know you're back. A simple, one-off return campaign — no monthly fees, no faff.
+              You have been away. We make sure your clients know you are back. A simple, one-off return campaign — no monthly fees, no faff.
             </p>
             <div className="text-5xl font-bold text-primary mb-8">£99</div>
             <Button size="lg" className="text-lg px-8 py-4 bg-foreground text-background hover:bg-foreground/90">
@@ -119,7 +123,7 @@ const StarterPackage = () => {
               {
                 icon: Clock,
                 title: "3 perfectly timed messages",
-                description: "One before you leave, one a month before your return, one when you're back. Keeps you front of mind the whole time.",
+                description: "One before you leave, one a month before your return, one when you are back. Keeps you front of mind the whole time.",
               },
               {
                 icon: Instagram,
@@ -141,16 +145,16 @@ const StarterPackage = () => {
       <section className="py-24 bg-muted/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-6 text-foreground">
-            Who It's For
+            Who It Is For
           </h2>
           <p className="text-lg text-muted-foreground text-center max-w-2xl mx-auto mb-14">
-            Whether you've been travelling the world, growing a tiny human, or just needed a breather — welcome back.
+            Whether you have been travelling the world, growing a tiny human, or just needed a breather — welcome back.
           </p>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <Card className="p-8 border-border">
               <Users className="w-8 h-8 text-primary mb-5" />
               <p className="text-lg text-card-foreground leading-relaxed">
-                Whether you've been travelling, had a baby, or just needed a break — if your client list is warm, Starter gets you back in business.
+                Whether you have been travelling, had a baby, or just needed a break — if your client list is warm, Starter gets you back in business.
               </p>
             </Card>
             <Card className="p-8 border-border">
@@ -170,14 +174,11 @@ const StarterPackage = () => {
             What it actually looks like
           </h2>
           <p className="text-lg text-muted-foreground text-center max-w-2xl mx-auto mb-14">
-            Every message is written in your voice, for your clients. Here's what that looks like in the real world.
+            Every message is written in your voice, for your clients. Here is what that looks like in the real world.
           </p>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {examples.map((example) => (
-              <div
-                key={example.name}
-                className="bg-card rounded-2xl border border-border p-8 flex flex-col gap-6"
-              >
+              <div key={example.name} className="bg-card rounded-2xl border border-border p-8 flex flex-col gap-6">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                     <span className="text-primary font-bold text-sm">{example.name[0]}</span>
@@ -187,13 +188,9 @@ const StarterPackage = () => {
                     <p className="text-xs text-muted-foreground">{example.role}</p>
                   </div>
                 </div>
-                <div className="relative">
-                  <div className="absolute -top-2 -left-1 text-primary/20">
-                    <Quote className="w-8 h-8" />
-                  </div>
-                  <p className="text-muted-foreground leading-relaxed italic pl-4 border-l-2 border-primary/30">
-                    {example.message}
-                  </p>
+                <div className="pl-4 border-l-2 border-primary/30">
+                  <MessageSquare className="w-6 h-6 text-primary/20 mb-2" />
+                  <p className="text-muted-foreground leading-relaxed italic">{example.message}</p>
                 </div>
               </div>
             ))}
@@ -208,7 +205,7 @@ const StarterPackage = () => {
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="p-8 bg-card rounded-xl border border-border">
               <div className="text-primary font-bold mb-2">Before you leave</div>
-              <p className="text-muted-foreground">Message 1 goes out by email. Clients know you're taking a break and when you'll be back.</p>
+              <p className="text-muted-foreground">Message 1 goes out by email. Clients know you are taking a break and when you will be back.</p>
             </div>
             <div className="p-8 bg-card rounded-xl border border-border">
               <div className="text-primary font-bold mb-2">4 weeks before return</div>
@@ -229,7 +226,7 @@ const StarterPackage = () => {
             Good to know
           </h2>
           <p className="text-lg text-muted-foreground text-center mb-14">
-            Everything you'd want to ask before you commit.
+            Everything you would want to ask before you commit.
           </p>
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
@@ -249,8 +246,6 @@ const StarterPackage = () => {
           </Accordion>
         </div>
       </section>
-
-      
 
       {/* CTA */}
       <section className="py-24 bg-gradient-to-br from-primary to-secondary text-white">
