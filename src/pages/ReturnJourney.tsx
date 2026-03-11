@@ -25,6 +25,7 @@ const ReturnJourney = () => {
     businessType: "",
     phone: "",
     returnDate: null as Date | null,
+    returnTime: "09:00",
     package: "",
     channels: [] as string[],
     bookingUrl: "",
@@ -74,7 +75,7 @@ const ReturnJourney = () => {
     },
   ];
 
-  const channels = [
+  const channelsList = [
     { id: "sms", label: "SMS" },
     { id: "email", label: "Email" },
     { id: "instagram", label: "Instagram" },
@@ -111,23 +112,32 @@ const ReturnJourney = () => {
     setIsSubmitting(true);
 
     try {
-      const data = new FormData();
-      data.append("fullName", formData.fullName);
-      data.append("email", formData.email);
-      data.append("businessName", formData.businessName);
-      data.append("businessType", formData.businessType);
-      data.append("phone", formData.phone);
-      data.append("returnDate", formData.returnDate ? format(formData.returnDate, "PPP") : "");
-      data.append("package", formData.package);
-      data.append("channels", formData.channels.join(", "));
-      data.append("bookingUrl", formData.bookingUrl);
-      data.append("marketingConsent", formData.marketingConsent ? "Yes" : "No");
-      if (contactListFile) data.append("contactList", contactListFile);
+      // Create FormData from state
+      const formDataSubmit = new FormData();
+      formDataSubmit.append("fullName", formData.fullName);
+      formDataSubmit.append("email", formData.email);
+      formDataSubmit.append("businessName", formData.businessName);
+      formDataSubmit.append("businessType", formData.businessType);
+      formDataSubmit.append("phone", formData.phone);
+      formDataSubmit.append("returnDate", formData.returnDate ? format(formData.returnDate, "yyyy-MM-dd") : "");
+      formDataSubmit.append("returnTime", formData.returnTime || "09:00");
+      formDataSubmit.append("package", formData.package);
+      formDataSubmit.append("channels", JSON.stringify(formData.channels));
+      formDataSubmit.append("bookingUrl", formData.bookingUrl);
+      formDataSubmit.append("marketingConsent", formData.marketingConsent.toString());
+      formDataSubmit.append("dataConsent", formData.dataConsent.toString());
+      formDataSubmit.append("termsConsent", formData.termsConsent.toString());
+      
+      if (contactListFile) {
+        formDataSubmit.append("contactList", contactListFile);
+      }
 
-      const response = await fetch("https://formspree.io/f/xaqpergy", {
+      const response = await fetch("https://formspree.io/f/xqapergy", {
         method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
+        body: formDataSubmit,
+        headers: { 
+          "Accept": "application/json" 
+        },
       });
 
       if (response.ok) {
@@ -137,9 +147,12 @@ const ReturnJourney = () => {
         });
         navigate("/");
       } else {
-        throw new Error("Submission failed");
+        const errorData = await response.json();
+        console.error("Formspree error:", errorData);
+        throw new Error(errorData.error || "Submission failed");
       }
     } catch (error) {
+      console.error("Submit error:", error);
       toast({
         title: "Something went wrong",
         description: "Please try again or contact us directly at hello@ineverleft.co.uk",
@@ -153,7 +166,6 @@ const ReturnJourney = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/5">
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-
         {/* Header */}
         <div className="mb-8">
           <Button variant="outline" onClick={() => navigate("/")} className="mb-4">
@@ -171,7 +183,6 @@ const ReturnJourney = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-8">
-
           {/* 1. Contact List Upload */}
           <Card>
             <CardHeader>
@@ -245,240 +256,4 @@ const ReturnJourney = () => {
                   />
                 </div>
               </div>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="businessName">Business/Brand Name *</Label>
-                  <Input
-                    id="businessName"
-                    required
-                    value={formData.businessName}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, businessName: e.target.value }))}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="phone">Phone Number *</Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    required
-                    value={formData.phone}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
-                  />
-                </div>
-              </div>
-              <div>
-                <Label htmlFor="businessType">Type of Business/Sector</Label>
-                <Select
-                  value={formData.businessType}
-                  onValueChange={(value) => setFormData((prev) => ({ ...prev, businessType: value }))}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select your industry" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="consulting">Consulting</SelectItem>
-                    <SelectItem value="design">Design & Creative</SelectItem>
-                    <SelectItem value="marketing">Marketing & PR</SelectItem>
-                    <SelectItem value="technology">Technology</SelectItem>
-                    <SelectItem value="photography">Photography</SelectItem>
-                    <SelectItem value="writing">Writing & Content</SelectItem>
-                    <SelectItem value="coaching">Coaching & Training</SelectItem>
-                    <SelectItem value="health">Health & Wellness</SelectItem>
-                    <SelectItem value="trades">Trades & Services</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 3. Return Date */}
-          <Card>
-            <CardHeader>
-              <CardTitle>3. Return Date</CardTitle>
-              <CardDescription>When are you back and ready for your campaign to launch?</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div>
-                <Label>Campaign Launch Date *</Label>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className={cn(
-                        "w-full justify-start text-left font-normal mt-2",
-                        !formData.returnDate && "text-muted-foreground"
-                      )}
-                    >
-                      <CalendarIcon className="mr-2 h-4 w-4" />
-                      {formData.returnDate ? format(formData.returnDate, "PPP") : "Select your return date"}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={formData.returnDate || undefined}
-                      onSelect={(date) => setFormData((prev) => ({ ...prev, returnDate: date || null }))}
-                      disabled={(date) => date < new Date()}
-                      initialFocus
-                      className="p-3 pointer-events-auto"
-                    />
-                  </PopoverContent>
-                </Popover>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 4. Package Selection */}
-          <Card>
-            <CardHeader>
-              <CardTitle>4. Choose Your Package</CardTitle>
-              <CardDescription>Select the campaign package that best fits your needs.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <RadioGroup
-                value={formData.package}
-                onValueChange={(value) => setFormData((prev) => ({ ...prev, package: value }))}
-                className="space-y-4"
-              >
-                {packages.map((pkg) => (
-                  <div key={pkg.id} className="border rounded-lg p-4 hover:border-primary transition-colors">
-                    <div className="flex items-start space-x-3">
-                      <RadioGroupItem value={pkg.id} id={pkg.id} className="mt-1" />
-                      <div className="flex-1">
-                        <Label htmlFor={pkg.id} className="text-base font-semibold cursor-pointer">
-                          {pkg.name} — {pkg.price}
-                        </Label>
-                        <ul className="mt-2 space-y-1">
-                          {pkg.features.map((feature, index) => (
-                            <li key={index} className="text-sm text-muted-foreground">
-                              • {feature}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </RadioGroup>
-            </CardContent>
-          </Card>
-
-          {/* 5. Communication Channels */}
-          <Card>
-            <CardHeader>
-              <CardTitle>5. Communication Channels</CardTitle>
-              <CardDescription>Which channels would you like us to use for your return campaign?</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex gap-8 mt-2">
-                {channels.map((channel) => (
-                  <div key={channel.id} className="flex items-center space-x-2">
-                    <Checkbox
-                      id={channel.id}
-                      checked={formData.channels.includes(channel.id)}
-                      onCheckedChange={(checked) => handleChannelChange(channel.id, checked as boolean)}
-                    />
-                    <Label htmlFor={channel.id} className="cursor-pointer">
-                      {channel.label}
-                    </Label>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* 6. Booking Integration */}
-          <Card>
-            <CardHeader>
-              <CardTitle>6. Booking Integration (Optional)</CardTitle>
-              <CardDescription>Provide your calendar or booking system URL to include in campaign messages.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Label htmlFor="bookingUrl">Booking/Calendar URL</Label>
-              <Input
-                id="bookingUrl"
-                type="url"
-                value={formData.bookingUrl}
-                onChange={(e) => setFormData((prev) => ({ ...prev, bookingUrl: e.target.value }))}
-                placeholder="https://calendly.com/yourname or your booking link"
-                className="mt-2"
-              />
-            </CardContent>
-          </Card>
-
-          {/* 7. Consent & Legal */}
-          <Card>
-            <CardHeader>
-              <CardTitle>7. Consent & Legal</CardTitle>
-              <CardDescription>Please confirm your consent for data processing and campaign execution.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-3">
-                <div className="flex items-start space-x-2">
-                  <Checkbox
-                    id="dataConsent"
-                    checked={formData.dataConsent}
-                    onCheckedChange={(checked) => setFormData((prev) => ({ ...prev, dataConsent: checked as boolean }))}
-                  />
-                  <Label htmlFor="dataConsent" className="text-sm leading-relaxed cursor-pointer">
-                    I consent to I Never Left processing my personal and business data to execute my return campaign.
-                    I understand data will be securely deleted within 7 days of campaign completion. *
-                  </Label>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <Checkbox
-                    id="termsConsent"
-                    checked={formData.termsConsent}
-                    onCheckedChange={(checked) => setFormData((prev) => ({ ...prev, termsConsent: checked as boolean }))}
-                  />
-                  <Label htmlFor="termsConsent" className="text-sm leading-relaxed cursor-pointer">
-                    I agree to the Terms of Service and Privacy Policy. *
-                  </Label>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <Checkbox
-                    id="marketingConsent"
-                    checked={formData.marketingConsent}
-                    onCheckedChange={(checked) => setFormData((prev) => ({ ...prev, marketingConsent: checked as boolean }))}
-                  />
-                  <Label htmlFor="marketingConsent" className="text-sm leading-relaxed cursor-pointer">
-                    I would like to receive updates about new I Never Left services and freelancer resources.
-                  </Label>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Submit */}
-          <Card>
-            <CardContent className="pt-6">
-              <div className="text-center space-y-4">
-                <Button
-                  type="submit"
-                  size="lg"
-                  disabled={!formData.dataConsent || !formData.termsConsent || isSubmitting}
-                  className="px-8 py-3"
-                >
-                  {isSubmitting ? "Starting Your Journey..." : "Start My Return Campaign"}
-                </Button>
-                <div className="text-sm text-muted-foreground max-w-md mx-auto">
-                  <p className="font-medium mb-2">What happens next:</p>
-                  <ul className="text-left space-y-1">
-                    <li>• We will review your details within 24 hours</li>
-                    <li>• Schedule a brief consultation call</li>
-                    <li>• Finalise your campaign strategy</li>
-                    <li>• Launch your return announcement</li>
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-        </form>
-      </div>
-    </div>
-  );
-};
-
-export default ReturnJourney;
+              <div className="grid md:grid-cols-2
