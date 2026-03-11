@@ -64,7 +64,7 @@ const phases = [
           <span className="text-xs font-semibold text-primary uppercase tracking-widest">Keeping warm</span>
         </div>
         <div className="grid grid-cols-3 gap-2">
-          {["Month 1", "Month 3", "Month 6"].map((m, i) => (
+          {["Month 1", "Month 3", "Month 6"].map((m) => (
             <div key={m} className="bg-card/80 border border-border rounded-xl px-3 py-3 text-center">
               <div className="text-xs text-muted-foreground mb-1">{m}</div>
               <div className="text-xs font-semibold text-primary">Post sent</div>
@@ -216,14 +216,31 @@ const Hero = () => {
               >
                 Start Your Comeback
               </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-base px-8 h-12 font-medium opacity-50 cursor-not-allowed"
+                disabled
+              >
+                Download Info Pack
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-base px-8 h-12 font-medium"
+                onClick={() => {
+                  const el = document.getElementById("services");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                View Plans & Pricing
+              </Button>
             </div>
           </div>
 
           {/* Right: Animated Journey */}
           <div className="relative lg:block">
             <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-gradient-to-br from-primary/20 via-background to-background border border-primary/20 shadow-2xl p-6 flex flex-col justify-between">
-
-              {/* Progress dots */}
               <div className="flex items-center gap-1.5 mb-4">
                 {phases.map((p, i) => (
                   <div
@@ -237,10 +254,8 @@ const Hero = () => {
                 ))}
                 <span className="ml-auto text-xs text-muted-foreground">{phase.label}</span>
               </div>
-
-              {/* Phase content */}
               <div
-                className="flex-1 flex flex-col justify-center transition-all duration-400"
+                className="flex-1 flex flex-col justify-center"
                 style={{
                   opacity: animating ? 1 : 0,
                   transform: animating ? "translateY(0)" : "translateY(8px)",
@@ -249,7 +264,6 @@ const Hero = () => {
               >
                 {phase.content}
               </div>
-
             </div>
           </div>
 
