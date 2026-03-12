@@ -137,10 +137,10 @@ const ReturnJourney = () => {
         body: formDataSubmit,
         headers: { 
           "Accept": "application/json" 
-        },
-      });
+          },
+        });
 
-      if (response.ok) {
+        if (response.ok) {
         toast({
           title: "Journey Started!",
           description: "We have received your details and will be in touch within 24 hours.",
@@ -228,32 +228,35 @@ const ReturnJourney = () => {
             </CardContent>
           </Card>
 
-          {/* 2. Your Details */}
+{/* Submit */}
           <Card>
-            <CardHeader>
-              <CardTitle>2. Your Details</CardTitle>
-              <CardDescription>Tell us about yourself and your business for personalised campaign messaging.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="fullName">Full Name *</Label>
-                  <Input
-                    id="fullName"
-                    required
-                    value={formData.fullName}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, fullName: e.target.value }))}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="email">Email Address *</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
-                  />
+            <CardContent className="pt-6">
+              <div className="text-center space-y-4">
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={!formData.dataConsent || !formData.termsConsent || isSubmitting}
+                  className="px-8 py-3"
+                >
+                  {isSubmitting ? "Starting Your Journey..." : "Start My Return Campaign"}
+                </Button>
+                <div className="text-sm text-muted-foreground max-w-md mx-auto">
+                  <p className="font-medium mb-2">What happens next:</p>
+                  <ul className="text-left space-y-1">
+                    <li>We will review your details within 24 hours</li>
+                    <li>Schedule a brief consultation call</li>
+                    <li>Finalise your campaign strategy</li>
+                    <li>Launch your return announcement</li>
+                  </ul>
                 </div>
               </div>
-              <div className="grid md:grid-cols-2
+            </CardContent>
+          </Card>
+
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default ReturnJourney;
