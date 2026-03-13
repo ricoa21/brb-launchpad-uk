@@ -1,3 +1,4 @@
+import INLLogo from "@/components/INLLogo";
 import { Button } from "@/components/ui/button";
 
 const Footer = () => {
@@ -71,9 +72,12 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-background/20 mt-16 pt-8 text-center">
-          <p className="text-background/60">
-            © 2026 I Never Left. Helping UK freelancers return with confidence. All rights reserved.
-          </p>
+          <div className="flex flex-col items-center gap-3">
+  <INLLogo variant="light" size={36} />
+  <p className="text-background/60">
+    © 2026 I Never Left. Helping UK freelancers return with confidence. All rights reserved.
+  </p>
+</div>
         </div>
       </div>
     </footer>

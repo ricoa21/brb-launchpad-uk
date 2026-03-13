@@ -1,3 +1,4 @@
+import INLLogo from "@/components/INLLogo";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
@@ -194,9 +195,12 @@ const Hero = () => {
 
           {/* Left: Text Content */}
           <div className="space-y-8 text-center lg:text-left">
-            <div className="inline-block px-4 py-2 bg-muted rounded-full text-sm font-medium text-muted-foreground mb-4">
-              FREELANCE RE-ENGAGEMENT SERVICES
-            </div>
+            <div className="flex items-center gap-3 mb-4">
+  <INLLogo variant="dark" size={40} />
+  <div className="inline-block px-4 py-2 bg-muted rounded-full text-sm font-medium text-muted-foreground">
+    FREELANCE RE-ENGAGEMENT SERVICES
+  </div>
+</div>
             <div className="space-y-6">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
                 Welcome to the Comeback Revolution. Because you never <em className="italic font-bold">really</em> left.
