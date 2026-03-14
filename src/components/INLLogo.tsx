@@ -4,9 +4,10 @@ interface INLLogoProps {
   variant?: "dark" | "light";
   size?: number;
   className?: string;
+  onPulse?: (intensity: number) => void;
 }
 
-const INLLogo = ({ variant = "dark", size = 100, className = "" }: INLLogoProps) => {
+const INLLogo = ({ variant = "dark", size = 100, className = "", onPulse }: INLLogoProps) => {
   const arcRef = useRef<SVGCircleElement>(null);
   const dotRef = useRef<SVGGElement>(null);
   const inlRef = useRef<SVGTextElement>(null);
@@ -69,6 +70,7 @@ const INLLogo = ({ variant = "dark", size = 100, className = "" }: INLLogoProps)
         glow.setAttribute("opacity", "0");
         inl.setAttribute("font-size", String(BASE_INL_SIZE));
         inl.setAttribute("y", "90");
+        onPulse?.(0);
       } else {
         const hElapsed = elapsed - SWEEP;
         const intensity = heartbeat(hElapsed);
@@ -81,6 +83,7 @@ const INLLogo = ({ variant = "dark", size = 100, className = "" }: INLLogoProps)
         inl.setAttribute("font-size", String(newSize));
         inl.setAttribute("y", String(90 + (newSize - BASE_INL_SIZE) * 0.3));
         dot.setAttribute("transform", `translate(${CX} ${CY - R})`);
+        onPulse?.(intensity);
       }
 
       rafRef.current = requestAnimationFrame(run);

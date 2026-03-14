@@ -195,9 +195,29 @@ const Hero = () => {
 
           {/* Left: Text Content */}
           <div className="space-y-8 text-center lg:text-left">
-            <div className="mb-4">
-              <INLLogo variant="dark" size={40} />
-            </div>
+            <div className="flex items-center gap-3 mb-4">
+  <INLLogo
+    variant="dark"
+    size={40}
+    onPulse={(intensity) => {
+      const el = document.getElementById("inl-wordmark");
+      if (el) {
+        el.style.transform = `scale(${1 + intensity * 0.08})`;
+        el.style.opacity = String(0.7 + intensity * 0.3);
+        el.style.color = intensity > 0.3
+          ? `hsl(${263 - intensity * 10}, ${70 + intensity * 20}%, ${70 + intensity * 15}%)`
+          : "";
+      }
+    }}
+  />
+  <span
+    id="inl-wordmark"
+    style={{ transition: "transform 0.05s ease, opacity 0.05s ease, color 0.05s ease", transformOrigin: "left center" }}
+    className="text-lg font-bold tracking-tight text-foreground"
+  >
+    I Never Left
+  </span>
+</div>
             <div className="space-y-6">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
                 Welcome to the Comeback Revolution. Because you never <em className="italic font-bold">really</em> left.
