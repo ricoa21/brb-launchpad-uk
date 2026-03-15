@@ -104,9 +104,10 @@ const ProPackage = () => {
               You're away for a while. We keep your audience warm the whole time — then make sure they're ready and waiting when you return.
             </p>
             <div className="text-5xl font-bold text-primary mb-8">£249</div>
-            <Button size="lg" className="text-lg px-8 py-4 bg-foreground text-background hover:bg-foreground/90">
-              Get Started — £249
-            </Button>
+            <Button size="lg" className="text-lg px-8 py-4 bg-foreground text-background hover:bg-foreground/90"
+  onClick={() => navigate("/return-journey")}>
+  Get Started — £249
+</Button>
           </div>
         </div>
       </section>
@@ -292,9 +293,10 @@ const ProPackage = () => {
       <section className="py-24 bg-gradient-to-br from-primary to-secondary text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready for a proper comeback?</h2>
-          <Button size="lg" className="text-lg px-8 py-4 bg-white text-primary hover:bg-white/90 mb-4">
-            Choose Pro — £249
-          </Button>
+         <Button size="lg" className="text-lg px-8 py-4 bg-white text-primary hover:bg-white/90 mb-4"
+  onClick={() => navigate("/return-journey")}>
+  Choose Pro — £249
+</Button>
           <p className="text-sm opacity-75">
             Includes 1 keep-warm post per month of your break, up to 12 months maximum.
           </p>

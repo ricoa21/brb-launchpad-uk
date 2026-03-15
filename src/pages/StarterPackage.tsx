@@ -100,9 +100,10 @@ const StarterPackage = () => {
               You have been away. We make sure your clients know you are back. A simple, one-off return campaign — no monthly fees, no faff.
             </p>
             <div className="text-5xl font-bold text-primary mb-8">£99</div>
-            <Button size="lg" className="text-lg px-8 py-4 bg-foreground text-background hover:bg-foreground/90">
-              Get Started — £99
-            </Button>
+           <Button size="lg" className="text-lg px-8 py-4 bg-foreground text-background hover:bg-foreground/90"
+  onClick={() => navigate("/return-journey")}>
+  Get Started — £99
+</Button>
           </div>
         </div>
       </section>
@@ -251,9 +252,10 @@ const StarterPackage = () => {
       <section className="py-24 bg-gradient-to-br from-primary to-secondary text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to come back?</h2>
-          <Button size="lg" className="text-lg px-8 py-4 bg-white text-primary hover:bg-white/90">
-            Start Your Comeback — £99
-          </Button>
+          <Button size="lg" className="text-lg px-8 py-4 bg-white text-primary hover:bg-white/90"
+  onClick={() => navigate("/return-journey")}>
+  Start Your Comeback — £99
+</Button>
         </div>
       </section>
 
