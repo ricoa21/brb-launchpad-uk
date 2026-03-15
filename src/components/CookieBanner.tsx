@@ -7,23 +7,38 @@ const GA_ID = "G-7M99ZJ236N";
 
 type ConsentState = "accepted" | "declined" | null;
 
-const loadGA = () => {
+declare global {
+  interface Window {
+    dataLayer: unknown[];
+    gtag: (...args: unknown[]) => void;
+  }
+}
+
+// Set up dataLayer and gtag immediately at module level
+window.dataLayer = window.dataLayer || [];
+function gtag(...args: unknown[]) {
+  window.dataLayer.push(args);
+}
+window.gtag = gtag;
+
+// Default consent denied
+gtag("consent", "default", { analytics_storage: "denied" });
+gtag("js", new Date());
+gtag("config", GA_ID, { anonymize_ip: true });
+
+const loadGAScript = () => {
   if (document.getElementById("ga-script")) return;
   const script = document.createElement("script");
   script.id = "ga-script";
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
   document.head.appendChild(script);
+};
 
-  script.onload = () => {
-    window.dataLayer = window.dataLayer || [];
-    function gtag(...args: unknown[]) {
-      window.dataLayer.push(args);
-    }
-    window.gtag = gtag;
-    gtag("js", new Date());
-    gtag("config", GA_ID, { anonymize_ip: true });
-  };
+const enableAnalytics = () => {
+  loadGAScript();
+  window.gtag("consent", "update", { analytics_storage: "granted" });
+  window.gtag("event", "page_view");
 };
 
 const CookieBanner = () => {
@@ -37,7 +52,7 @@ const CookieBanner = () => {
       return () => clearTimeout(timer);
     } else {
       setConsent(stored);
-      if (stored === "accepted") loadGA();
+      if (stored === "accepted") enableAnalytics();
     }
   }, []);
 
@@ -45,7 +60,7 @@ const CookieBanner = () => {
     localStorage.setItem(COOKIE_KEY, "accepted");
     setConsent("accepted");
     setVisible(false);
-    loadGA();
+    enableAnalytics();
   };
 
   const handleDecline = () => {
@@ -66,7 +81,6 @@ const CookieBanner = () => {
       <div className="max-w-4xl mx-auto bg-card border border-border rounded-2xl shadow-2xl p-5 sm:p-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
 
-          {/* Text */}
           <div className="flex-1 space-y-1">
             <p className="text-sm font-semibold text-foreground">
               🍪 We use cookies
@@ -82,7 +96,6 @@ const CookieBanner = () => {
             </p>
           </div>
 
-          {/* Buttons */}
           <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={handleDecline}
@@ -110,12 +123,5 @@ const CookieBanner = () => {
     </div>
   );
 };
-
-declare global {
-  interface Window {
-    dataLayer: unknown[];
-    gtag: (...args: unknown[]) => void;
-  }
-}
 
 export default CookieBanner;
