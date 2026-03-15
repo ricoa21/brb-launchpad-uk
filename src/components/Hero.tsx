@@ -222,13 +222,12 @@ const Hero = () => {
             </div>
 
             {/* Positioning line */}
-            <div className="mb-2">
-              <span className="text-xs font-semibold text-primary uppercase tracking-widest">
-                The only UK service built solely for freelancer re-engagement
-              </span>
-            </div>
-
             <div className="space-y-6">
+  <div>
+    <span className="text-xs font-semibold text-primary uppercase tracking-widest">
+      The only UK service built solely for freelancer re-engagement
+    </span>
+  </div>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
                 Welcome to the Comeback Revolution. Because you never <em className="italic font-bold">really</em> left.
               </h1>
