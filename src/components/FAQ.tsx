@@ -76,25 +76,21 @@ const FAQ = () => {
           ))}
         </Accordion>
 
-        <div className="mt-12 text-center p-8 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl border border-primary/10">
-          <Shield className="w-12 h-12 text-primary mx-auto mb-4" />
-          <h3 className="text-2xl font-bold mb-3 text-foreground">
-            Full Compliance Documentation
-          </h3>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            For complete details about our data handling, security practices, and GDPR compliance, please review our comprehensive policy documents.
-          </p>
-          
-            href="/compliance"
-            className="inline-flex items-center gap-2 text-primary font-semibold hover:underline"
-          >
-            <FileText className="w-5 h-5" />
-            View Full Compliance Documentation
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-};
+<div className="mt-12 text-center p-8 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl border border-primary/10">
+  <Shield className="w-12 h-12 text-primary mx-auto mb-4" />
+  <h3 className="text-2xl font-bold mb-3 text-foreground">
+    Full Compliance Documentation
+  </h3>
+  <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+    For complete details about our data handling, security practices, and GDPR compliance, please review our comprehensive policy documents.
+  </p>
+  
+    href="/compliance"
+    className="inline-flex items-center gap-2 text-primary font-semibold hover:underline"
+  >
+    <FileText className="w-5 h-5" />
+    View Full Compliance Documentation
+  </a>
+</div>
 
 export default FAQ;
