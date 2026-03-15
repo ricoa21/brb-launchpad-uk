@@ -12,6 +12,7 @@ import ConciergePackage from "./pages/ConciergePackage";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 import CompliancePage from "./pages/CompliancePage";
+import CookieBanner from "@/components/CookieBanner";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <CookieBanner />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/return-journey" element={<ReturnJourney />} />
